@@ -1,24 +1,19 @@
-import React from "react"
-import logo from "./logo.svg"
+import React, { useState } from "react"
 import "./App.css"
 
+import WorkoutCalendar from "./components/WorkoutCalendar"
+import { initialState } from "./constants/mocks"
+
+export const WorkoutContext = React.createContext([{}, () => {}])
+
 function App() {
+  const [workouts, setWorkouts] = useState(initialState)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <WorkoutContext.Provider value={[workouts, setWorkouts]}>
+        <WorkoutCalendar />
+      </WorkoutContext.Provider>
     </div>
   )
 }
