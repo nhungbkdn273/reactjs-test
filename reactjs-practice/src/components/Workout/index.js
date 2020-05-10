@@ -28,11 +28,8 @@ const Workout = ({
 
   const handleAddExercise = (event) => {
     const days = state.days || []
-    const currentDayIndex = days.findIndex((item) => item.id === currentDay.id)
+    const currentDayIndex = days.indexOf(currentDay)
     const workouts = days[currentDayIndex].workouts || []
-    const currentWorkoutIndex = workouts.findIndex(
-      (item) => item.id === workout.id
-    )
 
     const name = nameRef.current.value.trim()
     const number = numberRef.current.value.trim()
@@ -50,7 +47,7 @@ const Workout = ({
         workout = {
           ...workout,
         }
-        workouts[currentWorkoutIndex] = {
+        workouts[workouts.indexOf(workout)] = {
           ...workout,
         }
         days[currentDayIndex] = {
