@@ -1,4 +1,6 @@
 import React from "react"
+import PropTypes from "prop-types"
+
 import {
   ExerciseWrapper,
   FlexWrapper,
@@ -54,6 +56,24 @@ const Exercise = ({
       </FlexWrapper>
     </ExerciseWrapper>
   )
+}
+
+Exercise.defaultProps = {
+  exercise: {},
+  isInput: false,
+  nameRef: {},
+  numberRef: {},
+  infoRef: {},
+  handleOnKeyDown: () => {},
+}
+
+Exercise.propTypes = {
+  exercise: PropTypes.object,
+  isInput: PropTypes.bool,
+  nameRef: PropTypes.object,
+  numberRef: PropTypes.object,
+  infoRef: PropTypes.object,
+  handleOnKeyDown: PropTypes.func,
 }
 
 export default Exercise

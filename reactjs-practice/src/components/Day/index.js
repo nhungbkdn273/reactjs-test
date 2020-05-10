@@ -1,11 +1,14 @@
 import React from "react"
-import { DayWrapper, DayContainer, DayOfWeek, Date } from "./styles"
-import Workout from "../Workout"
+import PropTypes from "prop-types"
+
 import { Draggable } from "react-beautiful-dnd"
+
 import { isToday } from "../../utils/utilities"
 
-const Day = ({ day, date, dayRef, currentDay, ...droppableProps }) => {
-  return (
+import { DayWrapper, DayContainer, DayOfWeek, Date } from "./styles"
+import Workout from "../Workout"
+
+const Day = ({ day, date, dayRef, currentDay, ...droppableProps }) => (
     <DayWrapper ref={dayRef} {...droppableProps}>
       <DayOfWeek>{day}</DayOfWeek>
       <DayContainer>
@@ -32,6 +35,17 @@ const Day = ({ day, date, dayRef, currentDay, ...droppableProps }) => {
       </DayContainer>
     </DayWrapper>
   )
-}
+
+  Day.defaultProps = {
+    dayRef: () => {},
+    currentDay: {},
+  }
+  
+  Day.propTypes = {
+    dayRef: PropTypes.func,
+    currentDay: PropTypes.object,
+    day: PropTypes.string.isRequired,
+    date: PropTypes.object
+  }
 
 export default Day

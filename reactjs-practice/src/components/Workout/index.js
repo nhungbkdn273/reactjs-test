@@ -1,4 +1,6 @@
 import React, { useContext, useState, useRef } from "react"
+import PropTypes from "prop-types"
+
 import {
   WorkoutContainer,
   MenuIcon,
@@ -11,8 +13,7 @@ import Exercise from "../Exercise"
 import { WorkoutContext } from "../../App"
 
 const Workout = ({
-  workout = {},
-  day,
+  workout,
   currentDay,
   workoutRef,
   isDraging,
@@ -94,9 +95,23 @@ const Workout = ({
           onClick={() => setOpenedNewExercise(!openedNewExercise)}
           clicked={openedNewExercise}
         />
-      </FlexWrapper>
+      </FlexWrapper >
     </WorkoutContainer>
   )
+}
+
+Workout.defaultProps = {
+  workout: {},
+  currentDay: {},
+  workoutRef: () => {},
+  isDraging: false,
+}
+
+Workout.propTypes = {
+  workout: PropTypes.object,
+  currentDay: PropTypes.object,
+  workoutRef: PropTypes.func,
+  isDraging: PropTypes.bool,
 }
 
 export default Workout
