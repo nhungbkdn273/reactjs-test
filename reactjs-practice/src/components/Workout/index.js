@@ -95,7 +95,7 @@ const Workout = ({
           onClick={() => setOpenedNewExercise(!openedNewExercise)}
           clicked={openedNewExercise}
         />
-      </FlexWrapper >
+      </FlexWrapper>
     </WorkoutContainer>
   )
 }
