@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 import COLORS from "../../themes/colors"
 import TYPOGRAPHY from "../../themes/typography"
@@ -6,7 +6,7 @@ import TYPOGRAPHY from "../../themes/typography"
 const DayWrapper = styled.div`
   width: 13.5%;
   height: 100%;
-`;
+`
 
 const DayContainer = styled.div`
   width: 100%;
@@ -17,11 +17,11 @@ const DayContainer = styled.div`
 `
 
 const Date = styled.p`
-font-family: ${TYPOGRAPHY.fontFamily.base};
+  font-family: ${TYPOGRAPHY.fontFamily.base};
   font-weight: ${TYPOGRAPHY.fontWeight.base};
   font-size: ${TYPOGRAPHY.fontSize.xs};
   line-height: ${TYPOGRAPHY.lineHeight.sm};
-  color: ${COLORS.grey.g800};
+  color: ${(props) => (props.isToday ? COLORS.purple : COLORS.grey.g800)};
   text-align: left;
   margin-left: 5%;
   margin-top: 5px;
@@ -29,8 +29,8 @@ font-family: ${TYPOGRAPHY.fontFamily.base};
 `
 
 const DayOfWeek = styled.p`
-font-family: ${TYPOGRAPHY.fontFamily.base};
-font-weight: ${TYPOGRAPHY.fontWeight.base};
+  font-family: ${TYPOGRAPHY.fontFamily.base};
+  font-weight: ${TYPOGRAPHY.fontWeight.base};
   font-size: ${TYPOGRAPHY.fontSize.xxs};
   line-height: ${TYPOGRAPHY.lineHeight.xs};
   color: ${COLORS.grey.g900};

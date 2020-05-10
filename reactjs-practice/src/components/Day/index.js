@@ -1,31 +1,34 @@
-import React, { useContext } from 'react'
-import { DayWrapper, DayContainer, DayOfWeek, Date } from './styles'
-import Workout from '../Workout'
-import { WorkoutContext } from '../../App'
-import { DAYS_OF_WEEK } from '../../constants/day'
+import React from "react"
+import { DayWrapper, DayContainer, DayOfWeek, Date } from "./styles"
+import Workout from "../Workout"
+import { Draggable } from "react-beautiful-dnd"
+import { isToday } from "../../utils/utilities"
 
-const Day = ({ day, date }) => {
-  const [state] = useContext(WorkoutContext)
-  const days = state.days || []
-
-  const currentDay = days.find(item => DAYS_OF_WEEK[new window.Date(item.date).getDay() - 1] === day) || {}
+const Day = ({ day, date, dayRef, currentDay, ...droppableProps }) => {
   return (
-    <DayWrapper>
-      <DayOfWeek>
-        {day}
-      </DayOfWeek>
+    <DayWrapper ref={dayRef} {...droppableProps}>
+      <DayOfWeek>{day}</DayOfWeek>
       <DayContainer>
-        <Date>
-          {date.getDate()}
-        </Date>
-        {currentDay.workouts && currentDay.workouts.map(item => (
-        <Workout
-          key={day + "-" + item.id}
-          workout={item}
-          day={day}
-          currentDay={currentDay}
-        />
-        ))}
+        <Date isToday={isToday(date)}>{date.getDate()}</Date>
+        {currentDay.workouts &&
+          currentDay.workouts.map((item, index) => (
+            <Draggable key={item.id} draggableId={item.id} index={index}>
+              {(provided, snapshot) => {
+                return (
+                  <Workout
+                    key={day + "-" + item.id}
+                    workout={item}
+                    day={day}
+                    currentDay={currentDay}
+                    workoutRef={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    isDragging={snapshot.isDragging}
+                  />
+                )
+              }}
+            </Draggable>
+          ))}
       </DayContainer>
     </DayWrapper>
   )

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import "./App.css"
 
-import WorkoutCalendar from "./components/WorkoutCalendar"
+import Board from "./components/Board"
 import { initialState } from "./constants/mocks"
 
 export const WorkoutContext = React.createContext([{}, () => {}])
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <WorkoutContext.Provider value={[workouts, setWorkouts]}>
-        <WorkoutCalendar />
+        <Board />
       </WorkoutContext.Provider>
     </div>
   )

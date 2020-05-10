@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 import COLORS from "../../themes/colors"
 import TYPOGRAPHY from "../../themes/typography"
@@ -10,7 +10,7 @@ const WorkoutContainer = styled.div`
   border: 1px solid ${COLORS.grey.g300};
   background-color: ${COLORS.grey.g200};
   position: relative;
-  opacity: ${props => props.opacity}
+  opacity: ${(props) => props.opacity};
 `
 const MenuIcon = styled.span`
   position: absolute;
@@ -31,7 +31,7 @@ const TruncatedText = styled.p`
   text-overflow: ellipsis;
 `
 const WorkoutName = styled(TruncatedText)`
-font-family: ${TYPOGRAPHY.fontFamily.bold};
+  font-family: ${TYPOGRAPHY.fontFamily.bold};
   font-size: ${TYPOGRAPHY.fontSize.xxs};
   line-height: ${TYPOGRAPHY.lineHeight.xs};
   width: 85%;
@@ -45,36 +45,44 @@ const PlusButtonWrapper = styled.div`
   position: absolute;
 `
 const PlusButton = styled.span`
-background-color: ${COLORS.grey.g650};
-position: relative;
-width: 12px;
-height: 12px;
-border-radius: 50%;
-cursor: pointer;
-&:before,
-&:after {
-  content: "";
-  width: 6px;
-  height: 2px;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-		right: 50%;
-}
+  background-color: ${COLORS.grey.g650};
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  &:before,
+  &:after {
+    content: "";
+    width: 6px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+  }
 
   &:after {
     position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   &:before {
     top: 5px;
     right: 3px;
-    transform: ${props => props.clicked ? `rotate(0deg)` : `rotate(90deg)`};
+    transform: ${(props) => (props.clicked ? `rotate(0deg)` : `rotate(90deg)`)};
     transition: 0.4s;
   }
 `
 
-export { WorkoutContainer, MenuIcon, Dot, WorkoutName, TruncatedText, PlusButton, PlusButtonWrapper }
+export {
+  WorkoutContainer,
+  MenuIcon,
+  Dot,
+  WorkoutName,
+  TruncatedText,
+  PlusButton,
+  PlusButtonWrapper,
+}
